@@ -25,8 +25,8 @@ export default function ProcessSection() {
           {steps.map((s, i) => (
             <div
               key={s.num}
-              className={`border border-border bg-background p-8 md:p-10 transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-[0.98]'
+              className={`border border-border bg-background p-8 md:p-10 transition-all duration-700 ease-out ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-[0.92]'
               }`}
               style={{ transitionDelay: isVisible ? `${i * 120}ms` : '0ms' }}
             >
