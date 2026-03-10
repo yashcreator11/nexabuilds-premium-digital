@@ -5,7 +5,7 @@ const articles = [
   {
     slug: 'why-smbs-need-custom-software',
     title: 'Why SMBs Need Custom Software in 2026',
-    excerpt: 'Off-the-shelf tools can only take you so far. Here's how custom software gives growing businesses a competitive edge.',
+    excerpt: 'Off-the-shelf tools can only take you so far. Here is how custom software gives growing businesses a competitive edge.',
     author: 'NexaBuilds Team',
     date: 'Mar 5, 2026',
     readTime: '5 min read',
