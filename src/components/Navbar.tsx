@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
+import logo from '@/assets/futurax_solutions_logo.svg';
 
 const links = [
   { label: 'Services', href: '#services' },
