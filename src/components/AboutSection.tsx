@@ -26,7 +26,7 @@ export default function AboutSection() {
               Built by Builders
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              NexaBuilds was founded on a simple observation: small businesses deserve the same quality software that enterprises take for granted. We bridge that gap.
+              FuturaX Solutions was founded on a simple observation: small businesses deserve the same quality software that enterprises take for granted. We bridge that gap.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-10">
               We are a lean, senior team. No account managers, no handoffs, no bloat. The people you meet are the people who build your product.

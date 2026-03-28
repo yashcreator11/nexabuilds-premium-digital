@@ -120,7 +120,7 @@ export default function ContactSection() {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
-                <span className="text-foreground text-sm">hello@nexabuilds.com</span>
+                <span className="text-foreground text-sm">hello@futurax.com</span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
