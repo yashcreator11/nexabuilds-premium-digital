@@ -30,7 +30,11 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center">
-          <img src={logo} alt="FuturaX Solutions" className="h-8 md:h-10 w-auto" />
+          <img
+            src={logo}
+            alt="FuturaX Solutions"
+            className="h-14 md:h-16 w-auto dark:brightness-100 brightness-0"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
