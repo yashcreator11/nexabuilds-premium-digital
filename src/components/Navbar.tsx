@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
+import logo from '@/assets/futurax_solutions_logo.svg';
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -28,8 +29,8 @@ export default function Navbar() {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="text-xl font-extrabold tracking-tight text-foreground">
-          FuturaX Solutions
+        <a href="#" className="flex items-center">
+          <img src={logo} alt="FuturaX Solutions" className="h-8 md:h-10 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
