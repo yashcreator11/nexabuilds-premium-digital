@@ -44,7 +44,14 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <a
             href="#contact"
             className="inline-flex items-center h-10 px-6 text-sm font-semibold bg-primary text-primary-foreground hover:brightness-110 transition-all"
