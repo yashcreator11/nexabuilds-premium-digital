@@ -82,6 +82,13 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <button
+            onClick={toggleTheme}
+            className="w-12 h-12 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
+          </button>
           <a
             href="#contact"
             onClick={() => setOpen(false)}
