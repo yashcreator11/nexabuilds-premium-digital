@@ -4,12 +4,14 @@ import HeroSection from '@/components/HeroSection';
 import TrustedBy from '@/components/TrustedBy';
 import ServicesSection from '@/components/ServicesSection';
 import ProblemsSection from '@/components/ProblemsSection';
-import PortfolioSection from '@/components/PortfolioSection';
+import HowWeWorkSection from '@/components/HowWeWorkSection';
+import SprintExplanation from '@/components/SprintExplanation';
+import ContinuousEnhancements from '@/components/ContinuousEnhancements';
+import WhyGoOnlineSection from '@/components/WhyGoOnlineSection';
+import IndianTouchSection from '@/components/IndianTouchSection';
 import StatsSection from '@/components/StatsSection';
 import ProcessSection from '@/components/ProcessSection';
 import AboutSection from '@/components/AboutSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import BlogSection from '@/components/BlogSection';
 import CTABanner from '@/components/CTABanner';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -25,12 +27,14 @@ const Index = () => {
         <TrustedBy />
         <ServicesSection />
         <ProblemsSection />
-        <PortfolioSection />
-        <StatsSection />
+        <HowWeWorkSection />
+        <SprintExplanation />
+        <ContinuousEnhancements />
         <ProcessSection />
+        <WhyGoOnlineSection />
+        <IndianTouchSection />
+        <StatsSection />
         <AboutSection />
-        <TestimonialsSection />
-        <BlogSection />
         <CTABanner />
         <ContactSection />
       </main>
