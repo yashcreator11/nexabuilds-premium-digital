@@ -3,7 +3,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Star } from 'lucide-react';
 
 const testimonials = [
-  { quote: 'NexaBuilds transformed our operations. What used to take our team all week now runs automatically.', name: 'David Park', company: 'Meridian Logistics', rating: 5 },
+  { quote: 'FuturaX Solutions transformed our operations. What used to take our team all week now runs automatically.', name: 'David Park', company: 'Meridian Logistics', rating: 5 },
   { quote: 'They built our e-commerce platform in 6 weeks. Sales are up 40% since launch. No fluff, just results.', name: 'Lisa Chen', company: 'Onyx Retail', rating: 5 },
   { quote: 'Finally, a dev team that actually listens. They understood our business before they started building.', name: 'James Okafor', company: 'Pulse Health', rating: 5 },
   { quote: 'The dashboard they built gives us visibility we never had. We make better decisions every single day.', name: 'Maria Santos', company: 'Vertex Analytics', rating: 5 },

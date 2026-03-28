@@ -4,7 +4,7 @@ const columns = [
   { title: 'Company', links: ['About', 'Careers', 'Blog', 'Press'] },
   { title: 'Services', links: ['Web Development', 'Custom Software', 'Automation', 'Mobile Apps'] },
   { title: 'Projects', links: ['Case Studies', 'Portfolio', 'Open Source'] },
-  { title: 'Contact', links: ['hello@nexabuilds.com', '+1 (555) 123-4567', 'San Francisco, CA'] },
+  { title: 'Contact', links: ['hello@futurax.com', '+1 (555) 123-4567', 'San Francisco, CA'] },
 ];
 
 const socials = [
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-border">
           <div className="flex items-center gap-6">
-            <span className="text-lg font-extrabold text-foreground">NexaBuilds</span>
+            <span className="text-lg font-extrabold text-foreground">FuturaX Solutions</span>
             <span className="text-xs text-muted-foreground">Building the future, one product at a time.</span>
           </div>
 
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between mt-8 text-xs text-muted-foreground gap-2">
-          <span>© {new Date().getFullYear()} NexaBuilds. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} FuturaX Solutions. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

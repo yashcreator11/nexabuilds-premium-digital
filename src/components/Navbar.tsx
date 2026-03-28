@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="text-xl font-extrabold tracking-tight text-foreground">
-          NexaBuilds
+          FuturaX Solutions
         </a>
 
         <div className="hidden md:flex items-center gap-8">
