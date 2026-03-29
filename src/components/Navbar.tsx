@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/useTheme';
 import logo from '@/assets/futurax_solutions_logo.svg';
 
@@ -23,7 +24,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
         scrolled ? 'bg-background/90 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
@@ -38,14 +42,17 @@ export default function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
+          {links.map((l, i) => (
+            <motion.a
               key={l.href}
               href={l.href}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {l.label}
-            </a>
+            </motion.a>
           ))}
         </div>
 
@@ -103,6 +110,6 @@ export default function Navbar() {
           </a>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 }

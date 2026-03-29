@@ -1,5 +1,7 @@
+import { useState, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import ScrollProgress from '@/components/ScrollProgress';
+import Preloader from '@/components/Preloader';
 import HeroSection from '@/components/HeroSection';
 import TrustedBy from '@/components/TrustedBy';
 import ServicesSection from '@/components/ServicesSection';
@@ -18,6 +20,18 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const isFirstVisit = !sessionStorage.getItem('futurax_visited');
+  const [showPreloader, setShowPreloader] = useState(isFirstVisit);
+
+  const handlePreloaderComplete = useCallback(() => {
+    sessionStorage.setItem('futurax_visited', '1');
+    setShowPreloader(false);
+  }, []);
+
+  if (showPreloader) {
+    return <Preloader onComplete={handlePreloaderComplete} />;
+  }
+
   return (
     <div className="grain-overlay">
       <ScrollProgress />
