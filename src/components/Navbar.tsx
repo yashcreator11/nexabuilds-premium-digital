@@ -29,11 +29,11 @@ export default function Navbar() {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center">
+        <a href="#" className="flex items-center shrink-0">
           <img
             src={logo}
             alt="FuturaX Solutions"
-            className="h-14 md:h-16 w-auto dark:brightness-100 brightness-0"
+            className="block h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] object-contain rounded-md px-2 py-1 bg-white/90 dark:bg-white/10 shadow-sm dark:shadow-none"
           />
         </a>
 
