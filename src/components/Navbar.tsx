@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/useTheme';
-import logo from '@/assets/futurax_solutions_logo.svg';
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -11,6 +10,75 @@ const links = [
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
+
+const COMPANY_NAME = 'FuturaX';
+const COMPANY_SUFFIX = ' Solutions';
+
+function TypewriterBrand() {
+  const [displayedName, setDisplayedName] = useState('');
+  const [displayedSuffix, setDisplayedSuffix] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const [phase, setPhase] = useState<'name' | 'suffix' | 'done'>('name');
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const alreadyPlayed = sessionStorage.getItem('futurax_brand_typed');
+    if (alreadyPlayed) {
+      setDisplayedName(COMPANY_NAME);
+      setDisplayedSuffix(COMPANY_SUFFIX);
+      setPhase('done');
+      setShowCursor(false);
+      hasAnimated.current = true;
+      return;
+    }
+
+    let i = 0;
+    const nameInterval = setInterval(() => {
+      i++;
+      setDisplayedName(COMPANY_NAME.slice(0, i));
+      if (i >= COMPANY_NAME.length) {
+        clearInterval(nameInterval);
+        setTimeout(() => {
+          setPhase('suffix');
+          let j = 0;
+          const suffixInterval = setInterval(() => {
+            j++;
+            setDisplayedSuffix(COMPANY_SUFFIX.slice(0, j));
+            if (j >= COMPANY_SUFFIX.length) {
+              clearInterval(suffixInterval);
+              setPhase('done');
+              sessionStorage.setItem('futurax_brand_typed', '1');
+              setTimeout(() => setShowCursor(false), 1200);
+            }
+          }, 60);
+        }, 300);
+      }
+    }, 90);
+
+    return () => clearInterval(nameInterval);
+  }, []);
+
+  return (
+    <a href="#" className="flex items-baseline gap-0 shrink-0 select-none group">
+      <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground">
+        {displayedName.split('').map((char, idx) => (
+          <span
+            key={idx}
+            className={idx >= COMPANY_NAME.length - 1 ? 'text-primary' : ''}
+          >
+            {char}
+          </span>
+        ))}
+      </span>
+      <span className="text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-muted-foreground">
+        {displayedSuffix}
+      </span>
+      {showCursor && (
+        <span className="inline-block w-[2px] h-6 md:h-7 bg-primary ml-0.5 animate-pulse" />
+      )}
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,19 +95,13 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] as const }}
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
         scrolled ? 'bg-background/90 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center shrink-0">
-          <img
-            src={logo}
-            alt="FuturaX Solutions"
-            className="block h-12 sm:h-14 md:h-16 lg:h-20 w-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] object-contain rounded-md px-2 py-1 bg-white/90 dark:bg-white/10 shadow-sm dark:shadow-none"
-          />
-        </a>
+        <TypewriterBrand />
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l, i) => (
@@ -81,7 +143,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {open && (
         <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center gap-8">
           {links.map((l) => (
