@@ -1,22 +1,36 @@
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { motion } from 'framer-motion';
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function CTABanner() {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
-    <section ref={ref} className="py-20 md:py-32 bg-primary">
-      <div
-        className={`container text-center max-w-3xl transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-        }`}
-      >
-        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-primary-foreground mb-4">
+    <section className="py-20 md:py-32 bg-primary">
+      <div className="container text-center max-w-3xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease }}
+          className="text-3xl md:text-5xl font-black tracking-tight text-primary-foreground mb-4"
+        >
           Ready to Turn Your Idea Into Reality?
-        </h2>
-        <p className="text-primary-foreground/70 text-lg mb-10">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease }}
+          className="text-primary-foreground/70 text-lg mb-10"
+        >
           Let's build something amazing together.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2, ease }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
           <a
             href="#contact"
             className="inline-flex items-center h-12 px-8 text-base font-semibold bg-primary-foreground text-primary hover:opacity-90 transition-all"
@@ -29,7 +43,7 @@ export default function CTABanner() {
           >
             Book a Free Consultation
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

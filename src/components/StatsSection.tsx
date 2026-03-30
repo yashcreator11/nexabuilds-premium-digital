@@ -1,5 +1,6 @@
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { motion } from 'framer-motion';
 import { useCountUp } from '@/hooks/useCountUp';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const stats = [
   { value: 50, suffix: '+', label: 'Projects Delivered' },
@@ -22,19 +23,27 @@ function StatItem({ value, suffix, label, isVisible }: { value: number; suffix: 
   );
 }
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export default function StatsSection() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <section ref={ref} className="py-20 md:py-32 border-t border-border">
       <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border"
+        >
           {stats.map((s) => (
             <div key={s.label} className="bg-background">
               <StatItem {...s} isVisible={isVisible} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
