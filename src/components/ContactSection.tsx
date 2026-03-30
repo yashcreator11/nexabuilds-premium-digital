@@ -1,9 +1,10 @@
 import { useState, FormEvent } from 'react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export default function ContactSection() {
-  const { ref, isVisible } = useScrollReveal();
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -31,14 +32,15 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 md:py-32 border-t border-border">
+    <section id="contact" className="py-20 md:py-32 border-t border-border">
       <div className="container">
-        <div
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-16 transition-all duration-700 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease }}
+          >
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mb-4">
               Let's Talk
             </h2>
@@ -111,9 +113,15 @@ export default function ContactSection() {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
 
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15, ease }}
+            className="space-y-8"
+          >
             <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
               Get in Touch
             </h3>
@@ -146,7 +154,7 @@ export default function ContactSection() {
             <div className="border border-border h-48 bg-muted flex items-center justify-center text-muted-foreground text-sm">
               Map Placeholder
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

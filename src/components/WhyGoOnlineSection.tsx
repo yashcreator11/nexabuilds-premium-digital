@@ -1,4 +1,4 @@
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { motion } from 'framer-motion';
 import { Users, ShieldCheck, Clock, DollarSign } from 'lucide-react';
 
 const comparisons = [
@@ -8,29 +8,42 @@ const comparisons = [
   { icon: DollarSign, offline: 'Revenue capped by location', online: 'Unlimited growth potential', label: 'Increase Revenue' },
 ];
 
-export default function WhyGoOnlineSection() {
-  const { ref, isVisible } = useScrollReveal();
+const ease = [0.16, 1, 0.3, 1] as const;
 
+export default function WhyGoOnlineSection() {
   return (
-    <section ref={ref} className="py-20 md:py-32 border-t border-border">
+    <section className="py-20 md:py-32 border-t border-border">
       <div className="container">
         <div className="max-w-3xl mb-14">
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mb-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease }}
+            className="text-3xl md:text-5xl font-black tracking-tight text-foreground mb-4"
+          >
             Why Your Business Should Go Online
-          </h2>
-          <p className="text-muted-foreground text-lg">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.1, ease }}
+            className="text-muted-foreground text-lg"
+          >
             The digital shift isn't optional anymore — it's your biggest growth lever.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">
           {comparisons.map((c, i) => (
-            <div
+            <motion.div
               key={c.label}
-              className={`border border-border bg-background p-6 md:p-8 group hover:border-primary/30 transition-all duration-700 ease-out ${
-                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.92]'
-              }`}
-              style={{ transitionDelay: isVisible ? `${i * 120}ms` : '0ms' }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease }}
+              className="border border-border bg-background p-6 md:p-8 group hover:border-primary/30 transition-colors"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
@@ -50,7 +63,7 @@ export default function WhyGoOnlineSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
