@@ -120,16 +120,16 @@ export default function ContactSection() {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
-                <span className="text-foreground text-sm">hello@futurax.com</span>
+                <span className="text-foreground text-sm">yashkhandagale9619@gmail.com</span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
-                <span className="text-foreground text-sm">+1 (555) 123-4567</span>
+                <span className="text-foreground text-sm">+91 9619036483</span>
               </div>
               <div className="flex items-center gap-4">
                 <MessageCircle className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
                 <a
-                  href="https://wa.me/15551234567"
+                  href="https://wa.me/919619036483"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground text-sm hover:text-primary transition-colors"
@@ -139,7 +139,7 @@ export default function ContactSection() {
               </div>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary shrink-0" strokeWidth={1.5} />
-                <span className="text-foreground text-sm">San Francisco, CA</span>
+                <span className="text-foreground text-sm">India</span>
               </div>
             </div>
 

@@ -4,7 +4,7 @@ const columns = [
   { title: 'Company', links: ['About', 'Careers', 'Blog', 'Press'] },
   { title: 'Services', links: ['Web Development', 'Custom Software', 'Automation', 'Mobile Apps'] },
   { title: 'Projects', links: ['Case Studies', 'Portfolio', 'Open Source'] },
-  { title: 'Contact', links: ['hello@futurax.com', '+1 (555) 123-4567', 'San Francisco, CA'] },
+  { title: 'Contact', links: ['yashkhandagale9619@gmail.com', '+91 9619036483', 'India'] },
 ];
 
 const socials = [
