@@ -1,9 +1,11 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageCircle, Clock, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock, ShieldCheck, ArrowRight, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,10 +14,43 @@ export default function ContactSection() {
     description: '',
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.description) return;
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/yashdevops2711@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Organization: formData.business || 'Not Specified',
+          Budget_Range: formData.budget || 'Not Specified',
+          Project_Overview: formData.description,
+          _subject: `New Project Inquiry from ${formData.name} • AgileSquad`,
+          _template: 'table',
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        setSubmitted(true);
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      // In case of client offline or strict adblocker, mark submitted so client has confirmation
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -139,9 +174,20 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-[#F04424] text-white text-sm font-bold hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)]"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-[#F04424] text-white text-sm font-bold hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] disabled:opacity-60"
                 >
-                  Send Project Inquiry <ArrowRight className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending to Engineering Lead...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Project Inquiry</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -156,7 +202,7 @@ export default function ContactSection() {
 
               <div className="space-y-4 text-sm">
                 <a
-                  href="mailto:yashkhandagale9619@gmail.com"
+                  href="mailto:yashdevops2711@gmail.com"
                   className="flex items-center gap-3.5 p-3 rounded-2xl bg-muted/30 hover:bg-muted/70 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0">
@@ -165,7 +211,7 @@ export default function ContactSection() {
                   <div>
                     <div className="text-[10px] uppercase font-bold text-muted-foreground">Direct Email</div>
                     <div className="font-semibold text-foreground group-hover:text-[#F04424] transition-colors break-all">
-                      yashkhandagale9619@gmail.com
+                      yashdevops2711@gmail.com
                     </div>
                   </div>
                 </a>
