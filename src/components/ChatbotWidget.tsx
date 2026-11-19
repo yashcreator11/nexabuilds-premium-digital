@@ -233,20 +233,43 @@ export default function ChatbotWidget() {
 
   return (
     <>
+      {/* Mobile Backdrop when Chat is open */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-40 sm:hidden"
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Floating Launcher Button - Red-Orange Pill on Desktop, Circular Chat Icon on Mobile */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center w-12 h-12 sm:w-auto sm:h-auto sm:px-5 sm:py-3 rounded-full bg-[#F04424] text-white font-semibold text-xs sm:text-sm shadow-[0_8px_25px_rgba(240,68,36,0.4)] hover:bg-[#d6391b] transition-all duration-200 border border-white/20 select-none"
-        aria-label="Ask Yash"
-        title="Ask Yash"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center w-12 h-12 sm:w-auto sm:h-auto sm:px-5 sm:py-3 rounded-full bg-[#F04424] text-white font-semibold text-xs sm:text-sm shadow-[0_8px_25px_rgba(240,68,36,0.4)] hover:bg-[#d6391b] hover:scale-105 transition-all duration-200 border border-white/20 select-none touch-manipulation cursor-pointer"
+        aria-label={isOpen ? "Close Yash assistant" : "Ask Yash"}
+        title={isOpen ? "Close" : "Ask Yash"}
       >
         <div className="relative flex items-center justify-center">
-          <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
-          <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white animate-ping" />
+          {isOpen ? (
+            <X className="w-5 h-5 sm:w-4 sm:h-4" />
+          ) : (
+            <>
+              <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
+              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white animate-ping" />
+            </>
+          )}
         </div>
-        <span className="hidden sm:inline ml-2 font-bold tracking-wide">Ask Yash</span>
+        <span className="hidden sm:inline ml-2 font-bold tracking-wide">
+          {isOpen ? 'Close' : 'Ask Yash'}
+        </span>
       </motion.button>
 
       {/* Chat Window Modal */}
@@ -257,7 +280,7 @@ export default function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.92 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-18 sm:bottom-20 right-3 sm:right-6 left-3 sm:left-auto z-50 w-auto sm:w-[410px] max-w-[calc(100vw-1.5rem)] h-[520px] sm:h-[550px] max-h-[82vh] bg-background border border-border/80 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden backdrop-blur-xl"
+            className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 left-3 sm:left-auto z-50 w-auto sm:w-[410px] max-w-[calc(100vw-1.5rem)] h-[500px] sm:h-[550px] max-h-[calc(100dvh-6.5rem)] bg-background border border-border/80 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden backdrop-blur-xl"
           >
             {/* Header */}
             <div className="px-5 py-4 bg-card dark:bg-[#140F0D] border-b border-border flex items-center justify-between shadow-sm">
