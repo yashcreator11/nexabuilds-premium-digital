@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
@@ -30,12 +31,12 @@ export default function CTABanner() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-13 px-8 text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_6px_25px_rgba(240,68,36,0.5)] hover:-translate-y-0.5"
             >
               Start Your Project <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
 
             <a
               href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20free%20consultation"

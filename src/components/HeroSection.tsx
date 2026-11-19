@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Zap, Users, Sparkles } from 'lucide-react';
 import ParticleBackground from './ParticleBackground';
@@ -54,21 +55,19 @@ export default function HeroSection() {
             variants={fadeUp}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
           >
-            <a
-              href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20want%20to%20discuss%20a%20project%20and%20get%20a%20free%20quote"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-13 px-8 text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] hover:shadow-[0_8px_30px_rgba(240,68,36,0.5)] hover:-translate-y-0.5"
             >
               Start a Project <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
 
-            <a
-              href="#portfolio"
+            <Link
+              to="/work"
               className="w-full sm:w-auto inline-flex items-center justify-center h-13 px-8 text-sm font-bold rounded-full bg-card border-2 border-border text-foreground hover:bg-muted shadow-sm transition-all duration-200"
             >
-              View Our Work
-            </a>
+              View Delivered Work
+            </Link>
           </motion.div>
         </motion.div>
       </div>

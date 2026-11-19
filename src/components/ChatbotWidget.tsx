@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, Sparkles, PhoneCall, ChevronRight, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Sparkles, ChevronRight, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -17,8 +18,8 @@ const FAQ_PRESETS = [
     keywords: ['sprint', 'pay', 'payment', 'milestone', 'deposit', 'risk'],
     answer:
       'We work in 1–2 week sprints with clear deliverables. You only pay milestone-by-milestone after you test and approve the working demo on staging. Zero risky upfront lumpsums.',
-    actionLabel: 'View Sprint Details',
-    anchor: '#how-we-work',
+    actionLabel: 'View Sprint Details & Rates',
+    route: '/sprints',
   },
   {
     id: 'team',
@@ -26,8 +27,8 @@ const FAQ_PRESETS = [
     keywords: ['team', 'who', 'developer', 'figma', 'security', 'tester', 'qa', 'designer', 'backend', 'devops', 'cloud', 'roles', 'squad'],
     answer:
       'Every project gets a complete multidisciplinary engineering squad: UI/UX Figma Designer, Frontend Developer, Backend & API Engineer, DevOps & Cloud Architect, Cybersecurity Specialist, and QA Tester. No solo freelancers or account managers.',
-    actionLabel: 'Meet All 6 Roles',
-    anchor: '#about',
+    actionLabel: 'Meet All 6 Squad Roles',
+    route: '/squad',
   },
   {
     id: 'timeline',
@@ -36,7 +37,7 @@ const FAQ_PRESETS = [
     answer:
       'Most MVPs launch in 3 to 4 weeks across 2 focused sprints. We prioritize high-impact core features first so you can get real user feedback and start generating revenue immediately.',
     actionLabel: 'See 4-Step Process',
-    anchor: '#how-we-work',
+    route: '/sprints',
   },
   {
     id: 'pricing',
@@ -44,8 +45,8 @@ const FAQ_PRESETS = [
     keywords: ['price', 'pricing', 'cost', 'rates', 'budget', 'quote', 'how much', 'hourly', '450', 'rate', 'charge', 'fee'],
     answer:
       'Our rates are 100% transparent, starting at min ₹450/hour per developer (approx. $5.50/hr). A 1-week sprint (40 hrs) starts from ₹18,000 / dev, and a 2-week sprint (80 hrs) from ₹36,000 / dev. You get full timesheet tracking and only pay milestone-by-milestone after approving live staging demos.',
-    actionLabel: 'Get a Free Quote',
-    anchor: '#contact',
+    actionLabel: 'Calculate Sprint Quote',
+    route: '/sprints',
   },
   {
     id: 'ownership',
@@ -53,6 +54,8 @@ const FAQ_PRESETS = [
     keywords: ['code', 'ip', 'ownership', 'repo', 'github', 'rights', 'lock-in', 'license'],
     answer:
       'Yes, 100%. All intellectual property, GitHub repositories, design tokens, and cloud infrastructure belong entirely to you from day one. Zero vendor lock-in.',
+    actionLabel: 'Explore Our Squad & Standards',
+    route: '/squad',
   },
   {
     id: 'projects',
@@ -60,8 +63,8 @@ const FAQ_PRESETS = [
     keywords: ['project', 'projects', 'work', 'delivered', 'portfolio', 'case study', 'biometric', 'localnest', 'experience'],
     answer:
       'We recently delivered a 24/7 Pan-India Multi-Branch Biometric & Geofenced Mobile QR Attendance System for an enterprise running two continuous shifts, and LocalNest, a two-sided marketplace platform built for a growing startup with complete identity protection.',
-    actionLabel: 'View Delivered Projects',
-    anchor: '#portfolio',
+    actionLabel: 'View Delivered Case Studies',
+    route: '/work',
   },
   {
     id: 'security',
@@ -69,10 +72,13 @@ const FAQ_PRESETS = [
     keywords: ['security', 'compliance', 'cyber', 'auth', 'owasp', 'safe', 'data'],
     answer:
       'Our dedicated Cybersecurity Specialist reviews authentication, implements role-based access control (RBAC), audits data encryption at rest and in transit, and ensures OWASP compliance.',
+    actionLabel: 'View Security Standards',
+    route: '/squad',
   },
 ];
 
 export default function ChatbotWidget() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -169,13 +175,12 @@ export default function ChatbotWidget() {
 
       if (matched) {
         replyText = matched.answer;
-        if (matched.anchor) {
+        if (matched.route) {
           actions.push({
-            label: matched.actionLabel || 'View Section',
+            label: matched.actionLabel || 'View Page',
             action: () => {
               setIsOpen(false);
-              const el = document.querySelector(matched.anchor!);
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              navigate(matched.route!);
             },
           });
         }
@@ -195,8 +200,7 @@ export default function ChatbotWidget() {
           label: 'Request a Free Quote',
           action: () => {
             setIsOpen(false);
-            const el = document.querySelector('#contact');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
+            navigate('/contact');
           },
         });
       }
