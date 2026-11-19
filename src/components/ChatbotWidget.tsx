@@ -82,7 +82,7 @@ export default function ChatbotWidget() {
     {
       id: '1',
       sender: 'bot',
-      text: "Hi there! 👋 I'm the AgileSquad Assistant. Ask me anything about our rates (starting at min ₹450/hour), pay-per-sprint model, full 6-role squad, or tech stack!",
+      text: "Hi there! 👋 I'm Yash. Ask me anything about our rates (starting at min ₹450/hour), pay-per-sprint model, full 6-role squad, or delivered projects!",
       time: 'Just now',
     },
   ]);
@@ -233,19 +233,20 @@ export default function ChatbotWidget() {
 
   return (
     <>
-      {/* Floating Launcher Button - Redpanda Style Red-Orange Pill */}
+      {/* Floating Launcher Button - Red-Orange Pill on Desktop, Circular Chat Icon on Mobile */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-[#F04424] text-white font-semibold text-xs sm:text-sm shadow-[0_8px_25px_rgba(240,68,36,0.4)] hover:bg-[#d6391b] transition-all duration-200 border border-white/20 select-none"
-        aria-label="Ask AgileSquad Assistant"
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center w-12 h-12 sm:w-auto sm:h-auto sm:px-5 sm:py-3 rounded-full bg-[#F04424] text-white font-semibold text-xs sm:text-sm shadow-[0_8px_25px_rgba(240,68,36,0.4)] hover:bg-[#d6391b] transition-all duration-200 border border-white/20 select-none"
+        aria-label="Ask Yash"
+        title="Ask Yash"
       >
-        <div className="relative">
-          <MessageSquare className="w-4 h-4" />
+        <div className="relative flex items-center justify-center">
+          <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
           <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white animate-ping" />
         </div>
-        <span>Ask AgileSquad</span>
+        <span className="hidden sm:inline ml-2 font-bold tracking-wide">Ask Yash</span>
       </motion.button>
 
       {/* Chat Window Modal */}
@@ -266,10 +267,13 @@ export default function ChatbotWidget() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-sm text-foreground">AgileSquad Assistant</span>
+                    <span className="font-bold text-sm text-foreground">Yash</span>
+                    <span className="text-[10px] font-semibold text-[#F04424] bg-[#F04424]/10 border border-[#F04424]/20 px-2 py-0.5 rounded-full">
+                      Agile Lead
+                    </span>
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
-                  <p className="text-[11px] text-muted-foreground font-medium">Instant Answers • Pay-per-sprint & FAQ</p>
+                  <p className="text-[11px] text-muted-foreground font-medium">Sprint estimates, team roles & instant answers</p>
                 </div>
               </div>
 
