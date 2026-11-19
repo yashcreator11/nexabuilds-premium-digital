@@ -22,7 +22,7 @@ export default function ContactSection() {
     setSubmitError(null);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/yashdevops2711@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/e3bc32a0c4c8957336455ff10fdded58', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
