@@ -5,16 +5,22 @@ export function useCountUp(target: number, isVisible: boolean, duration = 1500) 
 
   useEffect(() => {
     if (!isVisible) return;
-    let start = 0;
+    let animId: number;
     const startTime = performance.now();
     const step = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        animId = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    animId = requestAnimationFrame(step);
+
+    return () => {
+      if (animId) cancelAnimationFrame(animId);
+    };
   }, [isVisible, target, duration]);
 
   return count;

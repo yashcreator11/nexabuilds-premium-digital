@@ -1,57 +1,53 @@
 import { motion } from 'framer-motion';
-import { AlertCircle, ArrowRight } from 'lucide-react';
+import { AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const problems = [
-  { problem: 'No online presence', solution: 'A conversion-focused website live in weeks' },
-  { problem: 'Manual, error-prone workflows', solution: 'Automated systems that run while you sleep' },
-  { problem: 'No CRM or client tracking', solution: 'A centralized hub for every relationship' },
-  { problem: 'Poor data visibility', solution: 'Real-time dashboards with actionable metrics' },
-  { problem: 'No automation in place', solution: 'Integrated pipelines from lead to invoice' },
-  { problem: 'Slow, outdated legacy systems', solution: 'Modern architecture built for scale' },
+  { problem: 'No online presence or outdated storefront', solution: 'A conversion-focused web app live in 3–4 weeks' },
+  { problem: 'Manual, error-prone spreadsheet tracking', solution: 'Automated CRM & data pipelines running 24/7' },
+  { problem: 'Agencies demanding 50% upfront deposit', solution: 'Pay-per-sprint only after you test working demos' },
+  { problem: 'Poor analytics visibility across departments', solution: 'Executive real-time telemetry dashboards' },
+  { problem: 'Solo freelancer bottlenecks & delays', solution: 'Dedicated 6-role multidisciplinary engineering squad' },
+  { problem: 'Slow, brittle legacy architecture', solution: 'Scalable Next.js, React, and cloud serverless stack' },
 ];
-
-const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function ProblemsSection() {
   return (
-    <section className="py-20 md:py-32 border-t border-border">
-      <div className="container">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease }}
-          className="text-3xl md:text-5xl font-black tracking-tight text-foreground mb-4"
-        >
-          Sound Familiar?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1, ease }}
-          className="text-muted-foreground text-lg mb-14 max-w-xl"
-        >
-          These are the exact problems our clients had before they called us.
-        </motion.p>
+    <section className="py-24 md:py-36 border-t border-border/60 relative">
+      <div className="container max-w-6xl mx-auto px-4">
+        <div className="max-w-3xl mb-16">
+          <div className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-3">
+            Bottlenecks We Solve
+          </div>
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-4">
+            Sound familiar? Here is how we fix it.
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg">
+            These are the exact operational friction points our clients faced before partnering with AgileSquad.
+          </p>
+        </div>
 
-        <div className="space-y-0 divide-y divide-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {problems.map((p, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.45, delay: i * 0.07, ease }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6 md:py-8"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="p-6 rounded-3xl bg-card border border-border/80 flex flex-col justify-between hover:border-[#F04424]/40 transition-colors"
             >
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span className="text-base">{p.problem}</span>
+              <div className="flex items-start gap-3 text-muted-foreground mb-4">
+                <div className="w-6 h-6 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0 mt-0.5">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-sm font-medium text-muted-foreground">{p.problem}</span>
               </div>
-              <div className="flex items-center gap-3 text-foreground font-medium">
-                <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-base">{p.solution}</span>
+
+              <div className="flex items-start gap-3 pt-3 border-t border-border/50 text-foreground font-semibold">
+                <div className="w-6 h-6 rounded-full bg-[#F04424]/10 text-[#F04424] flex items-center justify-center shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-sm text-foreground">{p.solution}</span>
               </div>
             </motion.div>
           ))}

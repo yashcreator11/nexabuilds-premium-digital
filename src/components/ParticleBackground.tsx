@@ -46,10 +46,10 @@ export default function ParticleBackground() {
       const h = canvas.offsetHeight;
       ctx.clearRect(0, 0, w, h);
 
-      // Get computed color for theming
+      // Get computed color for theming (Warm Redpanda Red-Orange)
       const isDark = document.documentElement.classList.contains('dark');
-      const dotColor = isDark ? '156, 100%, 45%' : '156, 80%, 35%';
-      const lineColor = isDark ? 'hsla(156, 100%, 45%,' : 'hsla(156, 80%, 35%,';
+      const dotColor = isDark ? '11, 88%, 54%' : '11, 80%, 48%';
+      const lineColor = isDark ? 'hsla(11, 88%, 54%,' : 'hsla(11, 80%, 48%,';
 
       for (const p of particles) {
         p.x += p.vx;

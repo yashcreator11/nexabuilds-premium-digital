@@ -1,84 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Menu, X, Sun, Moon, ArrowRight, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/hooks/useTheme';
 
 const links = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#portfolio' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
+  { label: 'Process', href: '#how-we-work' },
+  { label: 'Squad', href: '#about' },
+  { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
-
-const COMPANY_NAME = 'FuturaX';
-const COMPANY_SUFFIX = ' Solutions';
-
-function TypewriterBrand() {
-  const [displayedName, setDisplayedName] = useState('');
-  const [displayedSuffix, setDisplayedSuffix] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
-  const [phase, setPhase] = useState<'name' | 'suffix' | 'done'>('name');
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const alreadyPlayed = sessionStorage.getItem('futurax_brand_typed');
-    if (alreadyPlayed) {
-      setDisplayedName(COMPANY_NAME);
-      setDisplayedSuffix(COMPANY_SUFFIX);
-      setPhase('done');
-      setShowCursor(false);
-      hasAnimated.current = true;
-      return;
-    }
-
-    let i = 0;
-    const nameInterval = setInterval(() => {
-      i++;
-      setDisplayedName(COMPANY_NAME.slice(0, i));
-      if (i >= COMPANY_NAME.length) {
-        clearInterval(nameInterval);
-        setTimeout(() => {
-          setPhase('suffix');
-          let j = 0;
-          const suffixInterval = setInterval(() => {
-            j++;
-            setDisplayedSuffix(COMPANY_SUFFIX.slice(0, j));
-            if (j >= COMPANY_SUFFIX.length) {
-              clearInterval(suffixInterval);
-              setPhase('done');
-              sessionStorage.setItem('futurax_brand_typed', '1');
-              setTimeout(() => setShowCursor(false), 1200);
-            }
-          }, 60);
-        }, 300);
-      }
-    }, 90);
-
-    return () => clearInterval(nameInterval);
-  }, []);
-
-  return (
-    <a href="#" className="flex items-baseline gap-0 shrink-0 select-none group">
-      <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground">
-        {displayedName.split('').map((char, idx) => (
-          <span
-            key={idx}
-            className={idx >= COMPANY_NAME.length - 1 ? 'text-primary' : ''}
-          >
-            {char}
-          </span>
-        ))}
-      </span>
-      <span className="text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-muted-foreground">
-        {displayedSuffix}
-      </span>
-      {showCursor && (
-        <span className="inline-block w-[2px] h-6 md:h-7 bg-primary ml-0.5 animate-pulse" />
-      )}
-    </a>
-  );
-}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -86,91 +18,135 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] as const }}
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        scrolled ? 'bg-background/90 backdrop-blur-sm border-b border-border' : 'bg-transparent'
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-background/90 dark:bg-background/85 backdrop-blur-md border-b border-border shadow-sm py-3'
+          : 'bg-transparent py-5'
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <TypewriterBrand />
+      <div className="container flex items-center justify-between">
+        {/* Brand Logo - Redpanda Style Editorial Serif */}
+        <a href="#" className="flex items-center gap-2 group select-none">
+          <div className="w-8 h-8 rounded-lg bg-[#F04424] flex items-center justify-center text-white font-serif text-sm font-bold shadow-[0_0_15px_rgba(240,68,36,0.4)] group-hover:scale-105 transition-transform">
+            AS
+          </div>
+          <div className="flex items-baseline">
+            <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
+              Agile<span className="text-[#F04424] italic">Squad</span>
+            </span>
+          </div>
+        </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((l, i) => (
-            <motion.a
-              key={l.href}
-              href={l.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </motion.a>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-          <a
-            href="#contact"
-            className="inline-flex items-center h-10 px-6 text-sm font-semibold bg-primary text-primary-foreground hover:brightness-110 transition-all"
-          >
-            Start a Project
-          </a>
-        </div>
-
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {open && (
-        <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center gap-8">
+        {/* Center Links */}
+        <div className="hidden lg:flex items-center gap-1 bg-card/90 dark:bg-muted/30 border border-border rounded-full px-4 py-1.5 shadow-sm dark:shadow-none backdrop-blur-sm">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-2xl font-bold text-foreground"
+              className="text-xs font-semibold text-foreground/80 hover:text-[#F04424] hover:bg-muted px-3.5 py-1 rounded-full transition-all duration-150"
             >
               {l.label}
             </a>
           ))}
+        </div>
+
+        {/* Right CTA Actions */}
+        <div className="hidden sm:flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="w-12 h-12 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            className="w-9 h-9 rounded-full flex items-center justify-center text-foreground/80 hover:text-foreground hover:bg-muted transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
+
           <a
             href="#contact"
-            onClick={() => setOpen(false)}
-            className="inline-flex items-center h-12 px-8 text-base font-semibold bg-primary text-primary-foreground"
+            className="text-xs font-bold px-4 py-2 rounded-full border border-border bg-card text-foreground hover:bg-muted shadow-sm transition-all"
           >
-            Start a Project
+            Get a Quote
+          </a>
+
+          <a
+            href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20demo%20for%20my%20project"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-5 py-2.5 rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_4px_16px_rgba(240,68,36,0.35)] hover:shadow-[0_6px_22px_rgba(240,68,36,0.45)]"
+          >
+            Book Demo <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>
-      )}
+
+        {/* Mobile Hamburger */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="sm:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden px-6 py-6"
+          >
+            <div className="flex flex-col gap-4">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="text-base font-semibold text-foreground hover:text-[#F04424] transition-colors py-1"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <div className="pt-4 border-t border-border flex flex-col gap-3">
+                <a
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="w-full text-center text-sm font-semibold py-2.5 rounded-full border border-border text-foreground"
+                >
+                  Get a Quote
+                </a>
+                <a
+                  href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center text-sm font-bold py-2.5 rounded-full bg-[#F04424] text-white shadow-md"
+                >
+                  Book Demo
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

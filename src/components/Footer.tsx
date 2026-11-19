@@ -1,67 +1,153 @@
-import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, MessageCircle, ArrowUp } from 'lucide-react';
 
-const columns = [
-  { title: 'Company', links: ['About', 'Careers', 'Blog', 'Press'] },
-  { title: 'Services', links: ['Web Development', 'Custom Software', 'Automation', 'Mobile Apps'] },
-  { title: 'Projects', links: ['Case Studies', 'Portfolio', 'Open Source'] },
-  { title: 'Contact', links: ['yashkhandagale9619@gmail.com', '+91 9619036483', 'India'] },
-];
-
-const socials = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'X' },
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-];
+const navigation = {
+  services: [
+    { name: 'Custom Web Apps', href: '#services' },
+    { name: 'AI & Automation', href: '#services' },
+    { name: 'Executive Dashboards', href: '#services' },
+    { name: 'Mobile Development', href: '#services' },
+  ],
+  squad: [
+    { name: 'UI/UX & Figma', href: '#about' },
+    { name: 'Frontend Engineering', href: '#about' },
+    { name: 'Cybersecurity Auditing', href: '#about' },
+    { name: 'QA & Test Automation', href: '#about' },
+  ],
+  process: [
+    { name: 'Pay-Per-Sprint Model', href: '#how-we-work' },
+    { name: 'Case Studies', href: '#portfolio' },
+    { name: 'Client Testimonials', href: '#testimonials' },
+    { name: 'Book a Live Demo', href: '#contact' },
+  ],
+};
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="border-t border-border py-16 md:py-20">
-      <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">
-                {col.title}
-              </h4>
-              <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-sm text-foreground hover:text-primary transition-colors">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+    <footer className="border-t border-border/70 bg-[#120D0B] text-white py-16 md:py-24 relative overflow-hidden">
+      {/* Halftone footer glow */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 halftone-pattern opacity-20 pointer-events-none" />
+
+      <div className="container max-w-6xl mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+          {/* Brand info */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-[#F04424] flex items-center justify-center text-white font-serif text-sm font-bold shadow-[0_0_15px_rgba(240,68,36,0.4)]">
+                AS
+              </div>
+              <span className="font-serif text-2xl font-bold tracking-tight text-white">
+                Agile<span className="text-[#F04424] italic">Squad</span>
+              </span>
             </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-border">
-          <div className="flex items-center gap-6">
-            <span className="text-lg font-extrabold text-foreground">FuturaX Solutions</span>
-            <span className="text-xs text-muted-foreground">Building the future, one product at a time.</span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {socials.map((s) => (
+            <p className="text-zinc-400 text-sm max-w-sm leading-relaxed mb-6">
+              Precision software engineering, workflow automation, and dedicated multidisciplinary squads for modern businesses worldwide.
+            </p>
+            <div className="flex items-center gap-3">
               <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                href="https://wa.me/919619036483"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
+                aria-label="WhatsApp"
               >
-                <s.icon className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" />
               </a>
-            ))}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Nav links */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-4">
+              Disciplines
+            </h4>
+            <ul className="space-y-2.5">
+              {navigation.services.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-4">
+              Your Squad
+            </h4>
+            <ul className="space-y-2.5">
+              {navigation.squad.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-4">
+              Workflow
+            </h4>
+            <ul className="space-y-2.5">
+              {navigation.process.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between mt-8 text-xs text-muted-foreground gap-2">
-          <span>© {new Date().getFullYear()} FuturaX Solutions. All rights reserved.</span>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+          <div>
+            © {new Date().getFullYear()} AgileSquad. Built with precision and care.
+          </div>
+
+          <div className="flex items-center gap-6">
+            <span>Pay-per-sprint guarantee</span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1.5 text-zinc-300 hover:text-[#F04424] transition-colors"
+            >
+              <span>Back to top</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </div>

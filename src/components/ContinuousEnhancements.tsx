@@ -1,64 +1,44 @@
 import { motion } from 'framer-motion';
-import { MessageSquare, Wrench, Plus } from 'lucide-react';
+import { MessageSquare, Wrench, Plus, ShieldCheck } from 'lucide-react';
 
 const points = [
-  { icon: MessageSquare, text: 'We improve based on real user feedback' },
-  { icon: Wrench, text: 'We fix issues quickly' },
-  { icon: Plus, text: 'We add new features as your business grows' },
+  { icon: MessageSquare, title: 'Iterative Feedback', text: 'We refine features based on real end-user usage and data telemetry.' },
+  { icon: Wrench, title: 'Rapid Incident Response', text: '30-day post-launch warranty with instant patch releases for any bugs.' },
+  { icon: Plus, title: 'Continuous Scaling', text: 'Add high-impact features sprint-by-sprint as your business grows.' },
 ];
-
-const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function ContinuousEnhancements() {
   return (
-    <section className="py-16 md:py-24 border-t border-border">
-      <div className="container max-w-3xl text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease }}
-          className="text-3xl md:text-4xl font-black tracking-tight text-foreground mb-4"
-        >
-          Your Project Doesn't Stop After Launch
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1, ease }}
-          className="text-muted-foreground text-lg mb-12"
-        >
-          We stay with you, making your product better every day.
-        </motion.p>
+    <section className="py-20 md:py-32 border-t border-border/60 relative">
+      <div className="container max-w-4xl mx-auto px-4 text-center">
+        <div className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-3">
+          Post-Launch Partnership
+        </div>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+          Your software evolves as your business scales.
+        </h2>
+        <p className="text-muted-foreground text-base sm:text-lg mb-14 max-w-xl mx-auto">
+          We don&apos;t abandon you after Day 1 deployment. We ensure long-term stability and continuous iteration.
+        </p>
 
         <div className="grid sm:grid-cols-3 gap-6 mb-12">
           {points.map((p, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 25, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease }}
-              className="p-6 border border-border bg-background hover:border-primary/30 transition-colors group"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="p-8 rounded-3xl border border-border/80 bg-card hover:border-[#F04424]/40 hover:shadow-lg transition-all group"
             >
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <p.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+              <div className="w-12 h-12 rounded-2xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center mx-auto mb-5 text-[#F04424] group-hover:scale-110 transition-transform">
+                <p.icon className="w-6 h-6" strokeWidth={1.75} />
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
+              <h3 className="font-bold text-foreground text-base mb-2">{p.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{p.text}</p>
             </motion.div>
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-lg font-semibold text-foreground italic"
-        >
-          "We grow your product as your business grows."
-        </motion.p>
       </div>
     </section>
   );

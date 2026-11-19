@@ -1,73 +1,56 @@
 import { motion } from 'framer-motion';
 import { Store, Globe, Zap, ArrowRight } from 'lucide-react';
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
 export default function IndianTouchSection() {
   return (
-    <section className="py-20 md:py-32 border-t border-border">
-      <div className="container max-w-4xl">
+    <section className="py-20 md:py-32 border-t border-border/60 relative">
+      <div className="container max-w-5xl mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease }}
-          className="relative overflow-hidden border border-border bg-gradient-to-br from-primary/5 via-background to-primary/5 p-10 md:p-16"
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-[#F04424]/10 via-card to-card p-8 sm:p-12 md:p-16 shadow-xl"
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#F04424]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
           <div className="relative z-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease }}
-              className="text-3xl md:text-4xl font-black tracking-tight text-foreground mb-3"
-            >
-              From Local Shops to Digital Brands
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease }}
-              className="text-muted-foreground text-lg mb-10 max-w-xl"
-            >
-              Helping Indian businesses grow globally — one product at a time.
-            </motion.p>
+            <div className="text-xs font-bold uppercase tracking-widest text-[#F04424] mb-3">
+              Global Standards • Local Execution
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+              From Indian enterprises to global scale.
+            </h2>
+            <p className="text-muted-foreground text-base sm:text-lg mb-10 max-w-2xl leading-relaxed">
+              World-class engineering, Silicon-Valley-caliber design, and transparent sprint pricing tailored for ambitious Indian businesses and international partners.
+            </p>
 
             <div className="grid sm:grid-cols-3 gap-6 mb-10">
               {[
-                { icon: Store, title: 'Built for India', desc: 'We understand local businesses, their challenges, and what they need to grow.' },
-                { icon: Globe, title: 'Global Standards', desc: 'World-class design and technology — at a price that makes sense for Indian businesses.' },
-                { icon: Zap, title: 'Fast & Reliable', desc: 'From street-side startups to scaling brands, we ship products that just work.' },
+                { icon: Store, title: 'Built for High Volume', desc: 'Optimized for mobile-first user bases, low bandwidths, and instant UPI / payment flows.' },
+                { icon: Globe, title: 'International Caliber', desc: 'Top-tier Next.js and React architecture matching global SaaS and tech benchmarks.' },
+                { icon: Zap, title: 'Rapid Sprint Delivery', desc: 'Clear deliverables every 2 weeks. Pay milestone-by-milestone with zero hidden costs.' },
               ].map((item, i) => (
-                <motion.div
+                <div
                   key={item.title}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease }}
+                  className="p-5 rounded-2xl bg-background/60 border border-border/60"
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
-                    <item.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center mb-4 text-[#F04424]">
+                    <item.icon className="w-5 h-5" strokeWidth={1.75} />
                   </div>
                   <h3 className="text-sm font-bold text-foreground mb-1">{item.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            <motion.a
+            <a
               href="#contact"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-sm font-bold text-[#F04424] hover:text-[#d6391b] transition-all group"
             >
-              Let's build something together <ArrowRight className="w-4 h-4" />
-            </motion.a>
+              <span>Schedule a sprint consultation</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </motion.div>
       </div>
