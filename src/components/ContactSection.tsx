@@ -22,7 +22,8 @@ export default function ContactSection() {
     setSubmitError(null);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/e3bc32a0c4c8957336455ff10fdded58', {
+      const endpointToken = import.meta.env.VITE_FORMSUBMIT_TOKEN || 'e3bc32a0c4c8957336455ff10fdded58';
+      const response = await fetch(`https://formsubmit.co/ajax/${endpointToken}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
