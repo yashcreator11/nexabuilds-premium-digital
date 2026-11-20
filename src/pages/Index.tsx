@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Clock, Users, ShieldCheck, Award, Zap, Code2, Sparkles } from 'lucide-react';
 import HeroSection from '@/components/HeroSection';
 import TrustedBy from '@/components/TrustedBy';
+import GuaranteesSection from '@/components/GuaranteesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CTABanner from '@/components/CTABanner';
 
@@ -150,7 +151,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 4. Delivered Case Studies Teaser */}
+      {/* 4. Contractual Guarantees & Day-1 Handover */}
+      <GuaranteesSection />
+
+      {/* 5. Delivered Case Studies Teaser */}
       <section className="py-20 md:py-28 border-t border-border/60 relative">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
