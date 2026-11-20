@@ -122,23 +122,23 @@ export default function ChatbotWidget() {
         text: faq.answer,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         quickActions: [
-          ...(faq.anchor
+          ...(faq.route
             ? [
                 {
                   label: faq.actionLabel || 'Learn More',
                   action: () => {
                     setIsOpen(false);
-                    const el = document.querySelector(faq.anchor!);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    navigate(faq.route!);
                   },
                 },
               ]
             : []),
           {
-            label: 'Chat on WhatsApp',
+            label: 'Submit Sprint Scope',
             isPrimary: true,
             action: () => {
-              window.open('https://wa.me/919619036483?text=Hi%20AgileSquad%20team,%20I%20have%20a%20question%20about%20a%20project', '_blank');
+              setIsOpen(false);
+              navigate('/contact');
             },
           },
         ],
@@ -188,19 +188,20 @@ export default function ChatbotWidget() {
         replyText = "Hello! Looking to build software, an MVP, or an automation pipeline? Choose a quick question below or ask me directly!";
       } else {
         replyText =
-          "Thanks for asking! Our engineering team can give you exact specifics for your custom project. Would you like to connect directly on WhatsApp or drop a project quote?";
+          "Thanks for asking! Our engineering leads review requirements directly and prepare preliminary sprint roadmaps. Would you like to submit your project details or explore our rates?";
         actions.push({
-          label: 'Chat Directly on WhatsApp',
+          label: 'Submit Project Inquiry',
           isPrimary: true,
-          action: () => {
-            window.open('https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20discuss%20a%20project', '_blank');
-          },
-        });
-        actions.push({
-          label: 'Request a Free Quote',
           action: () => {
             setIsOpen(false);
             navigate('/contact');
+          },
+        });
+        actions.push({
+          label: 'View Sprints & Rates',
+          action: () => {
+            setIsOpen(false);
+            navigate('/sprints');
           },
         });
       }

@@ -53,33 +53,6 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                href="https://wa.me/919619036483"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
-                aria-label="Twitter / X"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
                 href="https://github.com/yashcreator11"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -88,6 +61,12 @@ export default function Footer() {
               >
                 <Github className="w-4 h-4" />
               </a>
+              <Link
+                to="/contact"
+                className="text-xs font-semibold px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white transition-all"
+              >
+                Intake Portal
+              </Link>
             </div>
           </div>
 

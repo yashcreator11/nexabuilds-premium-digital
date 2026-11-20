@@ -86,14 +86,12 @@ export default function Navbar() {
             Get a Quote
           </Link>
 
-          <a
-            href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20demo%20for%20my%20project"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_4px_16px_rgba(240,68,36,0.35)] hover:shadow-[0_6px_22px_rgba(240,68,36,0.45)]"
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-5 py-2.5 rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_4px_16px_rgba(240,68,36,0.35)] hover:shadow-[0_6px_22px_rgba(240,68,36,0.45)]"
           >
-            Book Demo <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+            Plan a Sprint <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
         {/* Mobile Hamburger Controls */}
@@ -148,18 +146,10 @@ export default function Navbar() {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="w-full text-center text-xs font-semibold py-2.5 rounded-full border border-border text-foreground hover:bg-muted transition-all"
+                  className="w-full text-center text-xs font-bold py-3 rounded-full bg-[#F04424] text-white shadow-md hover:bg-[#d6391b] transition-all"
                 >
-                  Get a Quote
+                  Start a Project & Sprint Quote
                 </Link>
-                <a
-                  href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center text-xs font-bold py-2.5 rounded-full bg-[#F04424] text-white shadow-md hover:bg-[#d6391b] transition-all"
-                >
-                  Book Demo via WhatsApp
-                </a>
               </div>
             </div>
           </motion.div>

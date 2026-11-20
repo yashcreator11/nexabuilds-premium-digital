@@ -54,14 +54,12 @@ export default function SprintsPage() {
               >
                 Plan Your First Sprint <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
-                href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20have%20questions%20about%20the%20pay-per-sprint%20model"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/work"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 min-h-[50px] text-xs sm:text-sm font-semibold rounded-full border border-border bg-card text-foreground hover:bg-muted transition-all leading-none"
               >
-                Chat on WhatsApp
-              </a>
+                View Delivered Work
+              </Link>
             </div>
           </motion.div>
         </div>

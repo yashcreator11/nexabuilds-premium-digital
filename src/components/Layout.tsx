@@ -2,7 +2,6 @@ import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import WhatsAppButton from './WhatsAppButton';
 import ChatbotWidget from './ChatbotWidget';
 
 const ROUTE_TITLES: Record<string, string> = {
@@ -39,7 +38,6 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar />
       <main className="flex-1 w-full">{children}</main>
       <Footer />
-      <WhatsAppButton />
       <ChatbotWidget />
     </div>
   );

@@ -38,14 +38,12 @@ export default function CTABanner() {
               Start Your Project <ArrowRight className="w-4 h-4" />
             </Link>
 
-            <a
-              href="https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20would%20like%20to%20book%20a%20free%20consultation"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/sprints"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 min-h-[54px] text-sm font-semibold rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white transition-all leading-none"
             >
-              <MessageCircle className="w-4 h-4" /> Quick WhatsApp Call
-            </a>
+              Explore Sprints & Rates
+            </Link>
           </div>
         </motion.div>
       </div>

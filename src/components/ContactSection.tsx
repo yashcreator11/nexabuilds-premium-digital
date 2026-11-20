@@ -76,21 +76,16 @@ export default function ContactSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="p-8 sm:p-10 rounded-3xl bg-card border border-[#F04424]/40 shadow-xl text-center"
               >
-                <div className="w-14 h-14 rounded-full bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] mx-auto mb-5">
+                <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 mx-auto mb-5">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-2">Inquiry Received!</h3>
                 <p className="text-muted-foreground text-sm max-w-md mx-auto mb-6">
-                  Thank you, <strong className="text-foreground">{formData.name}</strong>. Our engineering leads will review your project details and get back to you at <strong className="text-foreground">{formData.email}</strong> within 24 hours.
+                  Thank you, <strong className="text-foreground">{formData.name}</strong>. Our engineering leads will review your project details and reach out to <strong className="text-foreground">{formData.email}</strong> within 24 business hours.
                 </p>
-                <a
-                  href={`https://wa.me/919619036483?text=Hi%20AgileSquad,%20I%20just%20submitted%20an%20inquiry%20for%20${encodeURIComponent(formData.name)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F04424] text-white text-xs font-bold hover:bg-[#d6391b] transition-all shadow-md"
-                >
-                  <MessageCircle className="w-4 h-4" /> Expedite via WhatsApp
-                </a>
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-muted/60 border border-border text-foreground text-xs font-semibold">
+                  <Clock className="w-4 h-4 text-[#F04424]" /> Guaranteed 24-Hour Review Turnaround
+                </div>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -194,55 +189,52 @@ export default function ContactSection() {
             )}
           </div>
 
-          {/* Right Info Column (Replacing Map Placeholder) */}
+          {/* Right Info Column: Agency Intake Standards */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-card border border-border/80 shadow-xl space-y-6">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                Direct Contact Channels
-              </h3>
+            <div className="p-8 sm:p-10 rounded-3xl bg-card border border-border/80 shadow-xl space-y-6">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#F04424] block mb-1">
+                  Intake Process
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
+                  What to expect after you submit
+                </h3>
+              </div>
 
-              <div className="space-y-4 text-sm">
-                <a
-                  href="mailto:yashdevops2711@gmail.com"
-                  className="flex items-center gap-3.5 p-3 rounded-2xl bg-muted/30 hover:bg-muted/70 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0">
-                    <Mail className="w-4 h-4" />
+              <div className="space-y-4 text-xs">
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-muted/30 border border-border/50">
+                  <div className="w-8 h-8 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0 font-bold text-xs mt-0.5">
+                    01
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground">Direct Email</div>
-                    <div className="font-semibold text-foreground group-hover:text-[#F04424] transition-colors break-all">
-                      yashdevops2711@gmail.com
-                    </div>
+                    <div className="font-bold text-foreground text-sm mb-0.5">Engineering Lead Review</div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Every submission is evaluated directly by technical leads—zero junior account managers or sales push.
+                    </p>
                   </div>
-                </a>
+                </div>
 
-                <a
-                  href="https://wa.me/919619036483"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3.5 p-3 rounded-2xl bg-muted/30 hover:bg-muted/70 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 shrink-0">
-                    <MessageCircle className="w-4 h-4" />
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-muted/30 border border-border/50">
+                  <div className="w-8 h-8 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0 font-bold text-xs mt-0.5">
+                    02
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground">Instant Chat</div>
-                    <div className="font-semibold text-foreground group-hover:text-emerald-500 transition-colors">
-                      WhatsApp Quick Connect (+91 9619036483)
-                    </div>
+                    <div className="font-bold text-foreground text-sm mb-0.5">14-Day Sprint Scoping</div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      We break down your core features into tangible 2-week deliverables with clear milestones starting at min ₹450/hr.
+                    </p>
                   </div>
-                </a>
+                </div>
 
-                <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-muted/30">
-                  <div className="w-10 h-10 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0">
-                    <MapPin className="w-4 h-4" />
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-muted/30 border border-border/50">
+                  <div className="w-8 h-8 rounded-xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] shrink-0 font-bold text-xs mt-0.5">
+                    03
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground">Engineering Studio</div>
-                    <div className="font-semibold text-foreground">
-                      India HQ • Global Delivery (US, UK & Europe)
-                    </div>
+                    <div className="font-bold text-foreground text-sm mb-0.5">Mutual NDA & Demo Staging</div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      All proprietary business logic is covered under mutual NDA. You only pay milestone-by-milestone after approving live staging builds.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -250,12 +242,12 @@ export default function ContactSection() {
               {/* Guarantees Box */}
               <div className="pt-4 border-t border-border/50 space-y-2.5">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <ShieldCheck className="w-4 h-4 text-[#F04424] shrink-0" />
-                  <span>Strict NDA signed before any project kickoff</span>
+                  <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <span>100% Code & IP ownership assigned to you</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Clock className="w-4 h-4 text-[#F04424] shrink-0" />
-                  <span>Average response time under 2 business hours</span>
+                  <span>Average response time under 24 business hours</span>
                 </div>
               </div>
             </div>
