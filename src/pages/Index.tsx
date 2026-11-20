@@ -1,26 +1,12 @@
-import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Clock, Users, ShieldCheck, Award, Zap, Code2, Sparkles } from 'lucide-react';
-import Preloader from '@/components/Preloader';
 import HeroSection from '@/components/HeroSection';
 import TrustedBy from '@/components/TrustedBy';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CTABanner from '@/components/CTABanner';
 
 const Index = () => {
-  const isFirstVisit = !sessionStorage.getItem('agilesquad_visited');
-  const [showPreloader, setShowPreloader] = useState(isFirstVisit);
-
-  const handlePreloaderComplete = useCallback(() => {
-    sessionStorage.setItem('agilesquad_visited', '1');
-    setShowPreloader(false);
-  }, []);
-
-  if (showPreloader) {
-    return <Preloader onComplete={handlePreloaderComplete} />;
-  }
-
   return (
     <div>
       {/* 1. Hero Section */}

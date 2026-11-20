@@ -80,54 +80,57 @@ export default function HeroSection() {
               title: 'Pay-Per-Sprint Milestone Model',
               desc: 'Zero risky upfront lump sums. You inspect and test the working demo every 2 weeks before paying for the milestone.',
               cta: 'How sprints work',
-              href: '#how-we-work',
+              to: '/sprints',
               icon: Zap,
             },
             {
               title: 'Dedicated 6-in-1 Project Squad',
               desc: 'Every essential role on your build: Figma UX, Frontend, Backend & APIs, DevOps Cloud, Cybersecurity & QA.',
               cta: 'Meet all 6 roles',
-              href: '#about',
+              to: '/squad',
               icon: Users,
             },
             {
               title: '100% Code & IP Ownership',
               desc: 'You hold full intellectual property, clean GitHub repos, and infrastructure access from Day 1. No vendor lock-in.',
-              cta: 'View deliverables',
-              href: '#services',
+              cta: 'View deliverables & work',
+              to: '/work',
               icon: ShieldCheck,
             },
           ].map((card, i) => (
-            <motion.a
+            <motion.div
               key={card.title}
-              href={card.href}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 + i * 0.1, duration: 0.5 }}
-              className="group p-5 md:p-6 rounded-2xl bg-card border border-border shadow-md dark:shadow-none hover:border-[#F04424]/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
             >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424]">
-                    <card.icon className="w-4 h-4" />
+              <Link
+                to={card.to}
+                className="group p-5 md:p-6 rounded-2xl bg-card border border-border shadow-md dark:shadow-none hover:border-[#F04424]/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424]">
+                      <card.icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60">
+                      Feature 0{i + 1}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60">
-                    Feature 0{i + 1}
-                  </span>
+                  <h3 className="font-sans font-bold text-base text-foreground mb-2 group-hover:text-[#F04424] transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {card.desc}
+                  </p>
                 </div>
-                <h3 className="font-sans font-bold text-base text-foreground mb-2 group-hover:text-[#F04424] transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
 
-              <div className="mt-5 pt-3 border-t border-border/50 flex items-center gap-1.5 text-xs font-semibold text-[#F04424]">
-                <span>{card.cta}</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </motion.a>
+                <div className="mt-5 pt-3 border-t border-border/50 flex items-center gap-1.5 text-xs font-semibold text-[#F04424]">
+                  <span>{card.cta}</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

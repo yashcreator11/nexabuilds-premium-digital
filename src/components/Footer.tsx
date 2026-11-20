@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, MessageCircle, ArrowUp } from 'lucide-react';
+import { ArrowUp, ShieldCheck } from 'lucide-react';
+import BrandLogo from './BrandLogo';
 
 const navigation = {
   navigation: [
@@ -40,33 +41,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
           {/* Brand info */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4 group select-none">
-              <div className="w-8 h-8 rounded-lg bg-[#F04424] flex items-center justify-center text-white font-serif text-sm font-bold shadow-[0_0_15px_rgba(240,68,36,0.4)] group-hover:scale-105 transition-transform">
-                AS
-              </div>
-              <span className="font-serif text-2xl font-bold tracking-tight text-white">
-                Agile<span className="text-[#F04424] italic">Squad</span>
-              </span>
+            <Link to="/" className="inline-block mb-4 group select-none">
+              <BrandLogo size="md" className="[&_span]:text-white" />
             </Link>
             <p className="text-zinc-400 text-sm max-w-sm leading-relaxed mb-6">
               Precision software engineering, workflow automation, and dedicated multidisciplinary squads for modern businesses worldwide.
             </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/yashcreator11"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:text-[#F04424] hover:border-[#F04424]/40 hover:bg-white/10 transition-all"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <Link
-                to="/contact"
-                className="text-xs font-semibold px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white transition-all"
-              >
-                Intake Portal
-              </Link>
+            <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 w-fit">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs text-zinc-300 font-medium">Currently Booking 2-Week Sprints</span>
             </div>
           </div>
 

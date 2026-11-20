@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Home, Clock, Briefcase, Users, Mail } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function NotFound() {
   return (
@@ -15,8 +16,8 @@ export default function NotFound() {
         transition={{ duration: 0.4 }}
         className="max-w-lg w-full text-center relative z-10 p-8 sm:p-10 rounded-3xl bg-card border border-border/80 shadow-xl"
       >
-        <div className="w-14 h-14 rounded-2xl bg-[#F04424]/10 border border-[#F04424]/20 flex items-center justify-center text-[#F04424] font-serif text-2xl font-bold mx-auto mb-6 shadow-sm">
-          AS
+        <div className="flex justify-center mb-6">
+          <BrandLogo size="lg" showWordmark={false} />
         </div>
 
         <span className="text-xs font-bold uppercase tracking-widest text-[#F04424] block mb-2">

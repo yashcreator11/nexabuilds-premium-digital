@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/hooks/useTheme';
+import BrandLogo from './BrandLogo';
 
 const navLinks = [
   { label: 'Overview', path: '/' },
@@ -29,23 +30,15 @@ export default function Navbar() {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
           ? 'bg-background/95 dark:bg-background/90 backdrop-blur-md border-b border-border shadow-sm py-3'
           : 'bg-background/80 dark:bg-background/70 backdrop-blur-xs py-4'
-      }`}
+        }`}
     >
       <div className="container max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-2 group select-none">
-          <div className="w-8 h-8 rounded-lg bg-[#F04424] flex items-center justify-center text-white font-serif text-sm font-bold shadow-[0_0_15px_rgba(240,68,36,0.4)] group-hover:scale-105 transition-transform">
-            AS
-          </div>
-          <div className="flex items-baseline">
-            <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-              Agile<span className="text-[#F04424] italic">Squad</span>
-            </span>
-          </div>
+        <Link to="/" className="group select-none">
+          <BrandLogo size="md" />
         </Link>
 
         {/* Center Navigation Tabs */}
@@ -56,11 +49,10 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 select-none ${
-                  isActive
+                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-200 select-none ${isActive
                     ? 'bg-[#F04424] text-white shadow-sm font-bold'
                     : 'text-foreground/80 hover:text-[#F04424] hover:bg-muted/70'
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -131,11 +123,10 @@ export default function Navbar() {
                     key={item.path}
                     to={item.path}
                     onClick={() => setOpen(false)}
-                    className={`text-sm font-semibold px-4 py-2.5 rounded-xl transition-all ${
-                      isActive
+                    className={`text-sm font-semibold px-4 py-2.5 rounded-xl transition-all ${isActive
                         ? 'bg-[#F04424] text-white font-bold shadow-xs'
                         : 'text-foreground hover:bg-muted'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
