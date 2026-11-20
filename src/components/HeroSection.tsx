@@ -57,14 +57,14 @@ export default function HeroSection() {
           >
             <Link
               to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-13 px-8 text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] hover:shadow-[0_8px_30px_rgba(240,68,36,0.5)] hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 min-h-[54px] text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] hover:shadow-[0_8px_30px_rgba(240,68,36,0.5)] hover:-translate-y-0.5 leading-none"
             >
               Start a Project <ArrowRight className="w-4 h-4" />
             </Link>
 
             <Link
               to="/work"
-              className="w-full sm:w-auto inline-flex items-center justify-center h-13 px-8 text-sm font-bold rounded-full bg-card border-2 border-border text-foreground hover:bg-muted shadow-sm transition-all duration-200"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 min-h-[54px] text-sm font-bold rounded-full bg-card border-2 border-border text-foreground hover:bg-muted shadow-sm transition-all duration-200 leading-none"
             >
               View Delivered Work
             </Link>

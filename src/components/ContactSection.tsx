@@ -176,7 +176,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-[#F04424] text-white text-sm font-bold hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] disabled:opacity-60"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 min-h-[52px] rounded-full bg-[#F04424] text-white text-sm font-bold hover:bg-[#d6391b] transition-all duration-200 shadow-[0_6px_25px_rgba(240,68,36,0.4)] disabled:opacity-60 leading-none cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>

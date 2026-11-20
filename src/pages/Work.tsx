@@ -43,13 +43,13 @@ export default function WorkPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-7 text-xs sm:text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_4px_20px_rgba(240,68,36,0.35)]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 min-h-[50px] text-xs sm:text-sm font-bold rounded-full bg-[#F04424] text-white hover:bg-[#d6391b] transition-all shadow-[0_4px_20px_rgba(240,68,36,0.35)] leading-none"
               >
                 Discuss a Similar Build <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/sprints"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-7 text-xs sm:text-sm font-semibold rounded-full border border-border bg-card text-foreground hover:bg-muted transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 min-h-[50px] text-xs sm:text-sm font-semibold rounded-full border border-border bg-card text-foreground hover:bg-muted transition-all leading-none"
               >
                 See How We Sprint
               </Link>
