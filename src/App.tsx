@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,6 +26,18 @@ const App = () => (
             <Route path="/work" element={<WorkPage />} />
             <Route path="/squad" element={<SquadPage />} />
             <Route path="/contact" element={<ContactPage />} />
+
+            {/* Seamless redirects for common route synonyms */}
+            <Route path="/portfolio" element={<Navigate to="/work" replace />} />
+            <Route path="/case-studies" element={<Navigate to="/work" replace />} />
+            <Route path="/pricing" element={<Navigate to="/sprints" replace />} />
+            <Route path="/rates" element={<Navigate to="/sprints" replace />} />
+            <Route path="/services" element={<Navigate to="/sprints" replace />} />
+            <Route path="/process" element={<Navigate to="/sprints" replace />} />
+            <Route path="/how-we-work" element={<Navigate to="/sprints" replace />} />
+            <Route path="/team" element={<Navigate to="/squad" replace />} />
+            <Route path="/about" element={<Navigate to="/squad" replace />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
