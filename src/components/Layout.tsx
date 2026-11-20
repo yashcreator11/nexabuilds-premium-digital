@@ -5,11 +5,11 @@ import Footer from './Footer';
 import ChatbotWidget from './ChatbotWidget';
 
 const ROUTE_TITLES: Record<string, string> = {
-  '/': 'AgileSquad — Dedicated 6-Role Engineering Squads • Pay-Per-Sprint',
-  '/sprints': 'Sprints & Rates (From min ₹450/hr) • AgileSquad',
-  '/work': 'Delivered Production Case Studies • AgileSquad',
-  '/squad': 'Meet The 6-Role Squad & Standards • AgileSquad',
-  '/contact': 'Start a Project & Sprint Quote • AgileSquad',
+  '/': 'AgileSquad — Smart Software Studio',
+  '/sprints': 'Sprints & Pricing • AgileSquad',
+  '/work': 'Case Studies & Delivered Work • AgileSquad',
+  '/squad': 'Engineering Squad & Standards • AgileSquad',
+  '/contact': 'Start a Project • AgileSquad',
 };
 
 function RouteEffects() {
@@ -20,7 +20,7 @@ function RouteEffects() {
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     // Dynamic browser tab title
-    const pageTitle = ROUTE_TITLES[pathname] || 'AgileSquad — Dedicated Engineering Squads';
+    const pageTitle = ROUTE_TITLES[pathname] || 'AgileSquad — Smart Software Studio';
     document.title = pageTitle;
   }, [pathname]);
 
